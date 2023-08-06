@@ -24,16 +24,20 @@ function locationKey(){
     })
     .then(function(data){
         console.log('test');
-        console.log(data);
-        // var locationNum = (data.Key);
+        console.log(data[0].Key);
+        var locationNum = (data[0].Key);
         
         // if (locationTest == true){  
-        //   fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationNum}?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp`)      
-        //   .then(function(response){
-        //     return response.json();
-        //   })
-        //   .then(function(data){
-        //     console.log(data);
+          fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationNum}?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp`)      
+          .then(function(response){
+            return response.json();
+          })
+          .then(function(data){
+            console.log(data);
+
+          });
+    });
+};
         //     // with help from TA to format date correctly
         //    const dateOptions = { month: '2-digit', day: '2-digit', year: 'numeric' };
         //       const date = new Date(data.DailyForecasts[0].Date);
@@ -69,6 +73,6 @@ function locationKey(){
      
          
      
-    })};
+
     
  
