@@ -1,5 +1,5 @@
 
-var buttonEl = document.getElementById('search');
+var buttonEl = document.getElementById('button');
 var city = "bloomington mn US"
 var APIKey = ("j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q");
 var APIKey2 = "rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG"
