@@ -1,12 +1,12 @@
 
 var buttonEl = document.getElementById('search');
-var city = "bloomington"
+var city = "bloomington mn US"
 var APIKey = ("j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q");
 var APIKey2 = "rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG"
 // var grabbed from full stack linked in assignment
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=&appid=" + APIKey + city ;
-var queryURL2 = "HTTPS://dataservice.accuweather.com/locations/v1/search?={city}&{apikey}";
-var queryURL3 = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG&q=bloomington"
+var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=&appid=" + {APIKey2} + city ;
+var queryURL2 = "http://dataservice.accuweather.com/locations/v1/cities/" + city+ APIKey2;
+var queryURL3 = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG&q="+ city;
 
 // fetch request needed
 // https://api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={apiKey}
