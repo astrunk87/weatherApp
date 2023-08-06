@@ -8,9 +8,40 @@
 </head>
 <body>
     <main>
-    
-    <button type="button" class="btn btn-info" id="button">search</button>
+    <br>
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="city" aria-label="city" id="city">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="state" aria-label="state" id="state">
+            <div class="elements">
+                <h1 id="h1" placeholder="city"></h1>
+                <h2 id="h2" placeholder="state"></h2>
+            </div>    
+        </div>
+        </div>
+    <br>    
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button type="button" class="btn btn-primary btn-lg" id="button">search</button>
         <!-- <button id="search">test</button> -->
+    </div>
+    <br>
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button type="button" class="btn btn-primary btn-lg" id="recent1">recent search 1</button>
+        <!-- <button id="search">test</button> -->
+    </div>
+    <br>
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button type="button" class="btn btn-primary btn-lg" id="recent2">recent search 2</button>
+        <!-- <button id="search">test</button> -->
+    </div>
+    <br>
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button type="button" class="btn btn-primary btn-lg" id="recent3">recent search 3</button>
+        <!-- <button id="search">test</button> -->
+    </div>
+    <span id="response-text">error?</span>
     </main>
     <script type="text/javascript" src="./assets/script.js">
     </script>
