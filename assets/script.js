@@ -3,15 +3,17 @@ var responseText = document.getElementById('response-text');
 var buttonEl = document.getElementById('button');
 let cityInput = document.getElementById('city');
 let stateInput = document.getElementById('state');
-var h1El = document.getElementById('h1');
-var h2El= document.getElementById('h2');
-var elements = [h1El];
+var h1EL = document.getElementById('h1');
+var h2EL= document.getElementById('h2');
+var elements = [h1EL];
+var elements2 =[h2EL]
 
-var city = cityInput;
+var city = localStorage.getItem('city');
+var state = localStorage.getItem('state');
 var APIKey = ("j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q");
 var APIKey2 = "rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG"
 // var grabbed from full stack linked in assignment
-var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG&q="+ city;
+var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG&q="+ city + state;
 
 // trying to get these to work better
 // var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=&appid=" + {APIKey2} + city ;
@@ -23,19 +25,18 @@ var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?ap
 buttonEl.addEventListener('click', locationKey); 
     console.log('test');
     console.log(city);
+    console.log(state);
 
 
 cityInput.addEventListener('keydown', function (event) {
     // Access value of pressed key with key property
     var key = event.key.toLowerCase();
-    var alphabetNumericCharacters = 'abcdefghijklmnopqrstuvwxyz0123456789 '.split(
-    ''
-    );
+    var alphabetNumericCharacters = 'abcdefghijklmnopqrstuvwxyz0123456789 '.split('');
   if (alphabetNumericCharacters.includes(key)) {
     for (var i = 0; i < elements.length; i++) {
       elements[i].textContent += event.key;
-      console.log(h1El.textContent);
-      localStorage.setItem('city', h1El.textContent);
+      console.log(h1EL.textContent);
+      localStorage.setItem('city', h1EL.textContent);
     }
   }
     
@@ -43,14 +44,12 @@ cityInput.addEventListener('keydown', function (event) {
 stateInput.addEventListener('keydown', function (event) {
     // Access value of pressed key with key property
     var key = event.key.toLowerCase();
-    var alphabetNumericCharacters = 'abcdefghijklmnopqrstuvwxyz0123456789 '.split(
-    ''
-    );
+    var alphabetNumericCharacters = 'abcdefghijklmnopqrstuvwxyz0123456789 '.split('');
   if (alphabetNumericCharacters.includes(key)) {
     for (var i = 0; i < elements.length; i++) {
-      elements[i].textContent += event.key;
-      console.log(h2El.textContent);
-      localStorage.setItem('state', h2El.textContent);
+      elements2[i].textContent += event.key;
+      console.log(h2EL.textContent);
+      localStorage.setItem('state', h2EL.textContent);
     }
   }
     
@@ -66,7 +65,7 @@ function locationKey(){
     })
     .then(function(data){
         console.log('test');
-        console.log(h1El.textContent);
+        // console.log(h1EL.textContent);
         console.log(data[0].Key);
         var locationNum = (data[0].Key);
         
