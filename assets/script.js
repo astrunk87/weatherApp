@@ -5,13 +5,8 @@ let cityInput = document.getElementById('city');
 let stateInput = document.getElementById('state');
 var h1EL = document.getElementById('h1');
 var h2EL= document.getElementById('h2');
-var elements = [h1EL];
-var elements2 =[h2EL];
 var cityButton = document.getElementById('cityButton'); 
 var stateButton = document.getElementById('stateButton');
-
-
-
 var city = localStorage.getItem('city');
 var state = localStorage.getItem('state');
 var APIKey = ("j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q");
@@ -19,14 +14,9 @@ var APIKey2 = "rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG"
 // var grabbed from full stack linked in assignment
 var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG&q="+ city +"%20" + state;
 
-// %20 + state
 
-// trying to get these to work better
-// var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=&appid=" + {APIKey2} + city ;
-// var queryURL2 = "http://dataservice.accuweather.com/locations/v1/cities/" + city+ APIKey2;
-// fetch request needed
-// https://api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={apiKey}
 
+// base of this code if from class work 05-06 on form elements
 function handleCityButton(event) {
     event.preventDefault();  
     // select form element by its `name` attribute and get its value
@@ -42,49 +32,18 @@ function handleStateButton(event) {
     event.preventDefault();  
     // select form element by its `name` attribute and get its value
     var stateText = $('input[name="state-input"]').val(); 
-    // // print to the page
+    // print to the page
     h2EL.textContent = stateText;
     localStorage.setItem('state', h2EL.textContent);
    
   }
 stateButton.addEventListener('click', handleStateButton);
 
-// cityInput.addEventListener('keydown', function (event) {
-//     // Access value of pressed key with key property
-//     var key = event.key.toLowerCase();
-//     var alphabetNumericCharacters = 'abcdefghijklmnopqrstuvwxyz0123456789 '.split('');
-//     if (alphabetNumericCharacters.includes(key)) {
-//         for (var i = 0; i < elements.length; i++) {
-//             elements[i].textContent += event.key;
-//             // console.log(h1EL.textContent);
-//             localStorage.setItem('city', h1EL.textContent);
-//         }
-//     }
-    
-// });
-// localStorage.setItem('city', cityInput.textContent);
 
-// stateInput.addEventListener('keydown', function (event) {
-//     // Access value of pressed key with key property
-//     var key = event.key.toLowerCase();
-//     var alphabetNumericCharacters = 'abcdefghijklmnopqrstuvwxyz0123456789 '.split('');
-//     if (alphabetNumericCharacters.includes(key)) {
-//         for (var i = 0; i < elements.length; i++) {
-//             elements2[i].textContent += event.key;
-//             // console.log(h2EL.textContent);
-//             localStorage.setItem('state', h2EL.textContent);
-//         }
-//     }
-    
-// });
 buttonEl.addEventListener('click', locationKey)    
-    // console.log('test');
-    console.log(city);
-    // console.log(state);
+   
 
-// pull local storage for city and state
-
-// below grabbed from the first project "whose hotter", them edited for this project
+// below grabbed from the first project "whose hotter", then edited for this project
 function locationKey(){
     fetch(queryURL)
     .then(function(response){
