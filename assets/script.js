@@ -9,19 +9,34 @@ var cityButton = document.getElementById('cityButton');
 var stateButton = document.getElementById('stateButton');
 var city = localStorage.getItem('city');
 var state = localStorage.getItem('state');
-var APIKey = ("j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q");
-var APIKey2 = "rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG"
+var RSList = document.getElementById('RS-list');
+
+
+// var APIKey = ("j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q");
+// var APIKey2 = "rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG"
 // var grabbed from full stack linked in assignment
 var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q="+ city +"%20" + state;
 
-var today = dayjs("2023-08-09T07:00:00-05:00");
-$('#1a').text(today.format('MMM D, YYYY'));
-var tommorow = dayjs();
-$('#2a').text(tommorow.format('MMM D, YYYY'));
+var recentSearches = []
 
-// 2023-08-09T07:00:00-05:00
-// EpochDate: 1691582400
+function renderRecentSeraches() {
+    RSList.innerHTML = "";
 
+    for (var i = 0; i< recentSearches.length; i++)
+        var RS = recentSearches[i]
+
+    var li = document.createElement("li");
+    li.textContent = RS
+
+    RSList.appendChild(li);
+}
+
+function storerRecentSearches() {
+    // Stringify and set key in localStorage to todos array
+    localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+  }
+  var RSText = cityInput.value.trim();
+  recentSearches.push(RSText);
 
 // base of this function is from class work 05-06 on form elements
 function handleCityButton(event) {
