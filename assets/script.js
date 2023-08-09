@@ -16,7 +16,7 @@ var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?ap
 
 
 
-// base of this code if from class work 05-06 on form elements
+// base of this function is from class work 05-06 on form elements
 function handleCityButton(event) {
     event.preventDefault();  
     // select form element by its `name` attribute and get its value
@@ -40,8 +40,7 @@ function handleStateButton(event) {
 stateButton.addEventListener('click', handleStateButton);
 
 
-buttonEl.addEventListener('click', locationKey)    
-   
+buttonEl.addEventListener('click', locationKey)      
 
 // below grabbed from the first project "whose hotter", then edited for this project
 function locationKey(){
