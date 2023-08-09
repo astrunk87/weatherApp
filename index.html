@@ -11,9 +11,12 @@
     <br>
     <div class="row">
         <div class="col">
-            <input type="text" class="form-control" placeholder="city" aria-label="city" id="city">
+            <label for="city">city</label>
+            <input type="text" class="form-control" placeholder="enter city here" aria-label="city" id="city-input" name="city-input">
+            <button id="cityButton">button</button>
         </div>
         <div class="col">
+            <label for="state">enter state abbreviation here</label>
             <input type="text" class="form-control" placeholder="state" aria-label="state" id="state">
         </div>
         <div class="elements">
@@ -43,6 +46,8 @@
     </div>
     <span id="response-text">error?</span>
     </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script type="text/javascript" src="./assets/script.js">
     </script>
 </body>
