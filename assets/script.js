@@ -8,15 +8,16 @@ var h2EL= document.getElementById('h2');
 var elements = [h1EL];
 var elements2 =[h2EL];
 var cityButton = document.getElementById('cityButton'); 
+var stateButton = document.getElementById('stateButton');
 
 
 
 var city = localStorage.getItem('city');
-// var state = localStorage.getItem('state');
+var state = localStorage.getItem('state');
 var APIKey = ("j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q");
 var APIKey2 = "rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG"
 // var grabbed from full stack linked in assignment
-var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG&q="+ city;
+var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG&q="+ city +"%20" + state;
 
 // %20 + state
 
@@ -26,18 +27,27 @@ var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?ap
 // fetch request needed
 // https://api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={apiKey}
 
-function handleSubmit(event) {
+function handleCityButton(event) {
     event.preventDefault();  
     // select form element by its `name` attribute and get its value
     var cityText = $('input[name="city-input"]').val(); 
     // // print to the page
     h1EL.textContent = cityText;
     localStorage.setItem('city', h1EL.textContent);
-    // console.log(city);
-    // clear the form input element
-    // $('input[name="city-input"]').val('');
+   
   }
-cityButton.addEventListener('click', handleSubmit);
+cityButton.addEventListener('click', handleCityButton);
+
+function handleStateButton(event) {
+    event.preventDefault();  
+    // select form element by its `name` attribute and get its value
+    var stateText = $('input[name="state-input"]').val(); 
+    // // print to the page
+    h2EL.textContent = stateText;
+    localStorage.setItem('state', h2EL.textContent);
+   
+  }
+stateButton.addEventListener('click', handleStateButton);
 
 // cityInput.addEventListener('keydown', function (event) {
 //     // Access value of pressed key with key property
