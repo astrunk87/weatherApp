@@ -1,7 +1,7 @@
 
 var responseText = document.getElementById('response-text');
 var buttonEl = document.getElementById('button');
-let cityInput = document.getElementById('city');
+let cityInput = document.getElementById('city-input');
 let stateInput = document.getElementById('state');
 var h1EL = document.getElementById('h1');
 var h2EL= document.getElementById('h2');
@@ -15,7 +15,7 @@ var RSList = document.getElementById('RS-list');
 // var APIKey = ("j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q");
 // var APIKey2 = "rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG"
 // var grabbed from full stack linked in assignment
-var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q="+ city +"%20" + state;
+// var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q="+ city +"%20" + state;
 
 var recentSearches = []
 
@@ -31,12 +31,33 @@ function renderRecentSeraches() {
     RSList.appendChild(li);
 }
 
-function storerRecentSearches() {
+function init() {
+    // Get stored todos from localStorage
+    var storedSearches = JSON.parse(localStorage.getItem("recentSearches"));
+  
+    // If todos were retrieved from localStorage, update the todos array to it
+    if (storedSearches !== null) {
+      todos = storedSearches;
+    }
+  
+    // This is a helper function that will render todos to the DOM
+    renderRecentSeraches();
+  }
+
+function storeRecentSearches() {
     // Stringify and set key in localStorage to todos array
     localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
   }
-  var RSText = cityInput.value.trim();
-  recentSearches.push(RSText);
+
+buttonEl.addEventListener('click', function(event) {
+    event.preventDefault();
+    var RSText = cityInput.value.trim();
+    recentSearches.push(RSText);
+    storeRecentSearches();
+    console.log(recentSearches);
+});
+
+init()
 
 // base of this function is from class work 05-06 on form elements
 function handleCityButton(event) {
