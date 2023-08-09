@@ -14,10 +14,13 @@ var APIKey2 = "rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG"
 // var grabbed from full stack linked in assignment
 var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q="+ city +"%20" + state;
 
-var today = dayjs();
+var today = dayjs("2023-08-09T07:00:00-05:00");
 $('#1a').text(today.format('MMM D, YYYY'));
 var tommorow = dayjs();
 $('#2a').text(tommorow.format('MMM D, YYYY'));
+
+// 2023-08-09T07:00:00-05:00
+// EpochDate: 1691582400
 
 
 // base of this function is from class work 05-06 on form elements
@@ -67,26 +70,36 @@ function locationKey(){
           .then(function(data){
             console.log(data);
             // changes day 1 card
+            let day1date = dayjs( data.DailyForecasts[0].Date);
+            $('#day1date').text(day1date.format('MMM D, YYYY'));
             day1Phrase.textContent = (data.DailyForecasts[0].Day.IconPhrase)
             day1Maxtemp.textContent = "max temp of " +(data.DailyForecasts[0].Temperature.Maximum.Value)+ "°"
             day1Mintemp.textContent = "min temp of " +(data.DailyForecasts[0].Temperature.Minimum.Value) + "°"
             day1Precip.textContent = "type of precipitation: " + (data.DailyForecasts[0].Day.PrecipitationType)
             // changes day2 card
+            let day2date = dayjs( data.DailyForecasts[1].Date);
+            $('#day2date').text(day2date.format('MMM D, YYYY'));
             day2Phrase.textContent = (data.DailyForecasts[1].Day.IconPhrase)
             day2Maxtemp.textContent = "max temp of " +(data.DailyForecasts[1].Temperature.Maximum.Value)+ "°"
             day2Mintemp.textContent = "min temp of " +(data.DailyForecasts[1].Temperature.Minimum.Value) + "°"
             day2Precip.textContent = "type of precipitation: " + (data.DailyForecasts[1].Day.PrecipitationType)           
             // changes day 3 card
+            let day3date = dayjs( data.DailyForecasts[2].Date);
+            $('#day3date').text(day3date.format('MMM D, YYYY'));
             day3Phrase.textContent = (data.DailyForecasts[2].Day.IconPhrase)
             day3Maxtemp.textContent = "max temp of " +(data.DailyForecasts[2].Temperature.Maximum.Value)+ "°"
             day3Mintemp.textContent = "min temp of " +(data.DailyForecasts[2].Temperature.Minimum.Value) + "°"
             day3Precip.textContent = "type of precipitation: " + (data.DailyForecasts[2].Day.PrecipitationType)           
             // changes day 4 card
+            let day4date = dayjs( data.DailyForecasts[3].Date);
+            $('#day4date').text(day4date.format('MMM D, YYYY'));
             day4Phrase.textContent = (data.DailyForecasts[3].Day.IconPhrase)
             day4Maxtemp.textContent = "max temp of " +(data.DailyForecasts[3].Temperature.Maximum.Value)+ "°"
             day4Mintemp.textContent = "min temp of " +(data.DailyForecasts[3].Temperature.Minimum.Value) + "°"
             day4Precip.textContent = "type of precipitation: " + (data.DailyForecasts[3].Day.PrecipitationType)           
             // changes day 5 card
+            let day5date = dayjs( data.DailyForecasts[4].Date);
+            $('#day5date').text(day5date.format('MMM D, YYYY'));
             day5Phrase.textContent = (data.DailyForecasts[4].Day.IconPhrase)
             day5Maxtemp.textContent = "max temp of " +(data.DailyForecasts[4].Temperature.Maximum.Value)+ "°"
             day5Mintemp.textContent = "min temp of " +(data.DailyForecasts[4].Temperature.Minimum.Value) + "°"
