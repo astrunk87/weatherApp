@@ -12,8 +12,12 @@ var state = localStorage.getItem('state');
 var APIKey = ("j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q");
 var APIKey2 = "rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG"
 // var grabbed from full stack linked in assignment
-var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG&q="+ city +"%20" + state;
+var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q="+ city +"%20" + state;
 
+var today = dayjs();
+$('#1a').text(today.format('MMM D, YYYY'));
+var tommorow = dayjs();
+$('#2a').text(tommorow.format('MMM D, YYYY'));
 
 
 // base of this function is from class work 05-06 on form elements
@@ -62,9 +66,33 @@ function locationKey(){
           })
           .then(function(data){
             console.log(data);
-            // console.log(response);
-            // if (response.status === 200) {
-            //   responseText.textContent = response.status;
+            // changes day 1 card
+            day1Phrase.textContent = (data.DailyForecasts[0].Day.IconPhrase)
+            day1Maxtemp.textContent = "max temp of " +(data.DailyForecasts[0].Temperature.Maximum.Value)+ "°"
+            day1Mintemp.textContent = "min temp of " +(data.DailyForecasts[0].Temperature.Minimum.Value) + "°"
+            day1Precip.textContent = "type of precipitation: " + (data.DailyForecasts[0].Day.PrecipitationType)
+            // changes day2 card
+            day2Phrase.textContent = (data.DailyForecasts[1].Day.IconPhrase)
+            day2Maxtemp.textContent = "max temp of " +(data.DailyForecasts[1].Temperature.Maximum.Value)+ "°"
+            day2Mintemp.textContent = "min temp of " +(data.DailyForecasts[1].Temperature.Minimum.Value) + "°"
+            day2Precip.textContent = "type of precipitation: " + (data.DailyForecasts[1].Day.PrecipitationType)           
+            // changes day 3 card
+            day3Phrase.textContent = (data.DailyForecasts[2].Day.IconPhrase)
+            day3Maxtemp.textContent = "max temp of " +(data.DailyForecasts[2].Temperature.Maximum.Value)+ "°"
+            day3Mintemp.textContent = "min temp of " +(data.DailyForecasts[2].Temperature.Minimum.Value) + "°"
+            day3Precip.textContent = "type of precipitation: " + (data.DailyForecasts[2].Day.PrecipitationType)           
+            // changes day 4 card
+            day4Phrase.textContent = (data.DailyForecasts[3].Day.IconPhrase)
+            day4Maxtemp.textContent = "max temp of " +(data.DailyForecasts[3].Temperature.Maximum.Value)+ "°"
+            day4Mintemp.textContent = "min temp of " +(data.DailyForecasts[3].Temperature.Minimum.Value) + "°"
+            day4Precip.textContent = "type of precipitation: " + (data.DailyForecasts[3].Day.PrecipitationType)           
+            // changes day 5 card
+            day5Phrase.textContent = (data.DailyForecasts[4].Day.IconPhrase)
+            day5Maxtemp.textContent = "max temp of " +(data.DailyForecasts[4].Temperature.Maximum.Value)+ "°"
+            day5Mintemp.textContent = "min temp of " +(data.DailyForecasts[4].Temperature.Minimum.Value) + "°"
+            day5Precip.textContent = "type of precipitation: " + (data.DailyForecasts[4].Day.PrecipitationType)
+           
+          
 
         });
         //   .catch(function(error){
