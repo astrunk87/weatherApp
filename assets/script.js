@@ -28,7 +28,8 @@ function renderRecentSeraches() {
     var li = document.createElement("li");
     li.textContent = RS
 
-    RSList.appendChild(li);
+    RSList.appendChild();
+    RSList.textContent(li);
 }
 
 function init() {
