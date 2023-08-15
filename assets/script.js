@@ -1,6 +1,6 @@
 
 var responseText = document.getElementById('response-text');
-var buttonEl = document.getElementById('button');
+var buttonEl = document.getElementById('searchButton');
 let cityInput = document.getElementById('city-input');
 let stateInput = document.getElementById('state');
 var h1EL = document.getElementById('h1');
@@ -18,9 +18,14 @@ var RSList = document.getElementById('RS-list');
 // var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q="+ city +"%20" + state;
 
 var recentSearches = []
+// this worked to change first button to recent search
+recent1.textContent = recentSearches[0]
+recent2.textContent = recentSearches[1]
+recent3.textContent = recentSearches[2]
+
 
 function renderRecentSeraches() {
-    RSList.innerHTML = "";
+    // RSList.innerHTML = "";
 
     for (var i = 0; i< recentSearches.length; i++)
         var RS = recentSearches[i]
@@ -28,8 +33,12 @@ function renderRecentSeraches() {
     var li = document.createElement("li");
     li.textContent = RS
 
-    RSList.appendChild();
-    RSList.textContent(li);
+    
+    RSList.textContent = (li);
+    console.log(recentSearches);
+    recent1.textContent = recentSearches[0]
+    recent2.textContent = recentSearches[1]
+    recent3.textContent = recentSearches[2]
 }
 
 function init() {
@@ -52,10 +61,12 @@ function storeRecentSearches() {
 
 buttonEl.addEventListener('click', function(event) {
     event.preventDefault();
-    var RSText = cityInput.value.trim();
+    var RSText = cityInput.value.trim() +" "+ stateInput.value
     recentSearches.push(RSText);
+    // storeRecentSearches();
+    // console.log(recentSearches);
     storeRecentSearches();
-    console.log(recentSearches);
+    renderRecentSeraches();
 });
 
 init()
@@ -82,6 +93,7 @@ function handleStateButton(event) {
    
   }
 stateButton.addEventListener('click', handleStateButton);
+
 
 
 buttonEl.addEventListener('click', locationKey)      
@@ -145,44 +157,10 @@ function locationKey(){
           
 
         });
-        //   .catch(function(error){
-        //     console.log(error);
-        //     // modal alert goes here
-        //   })
+        
     });
 };
-        //     // with help from TA to format date correctly
-        //    const dateOptions = { month: '2-digit', day: '2-digit', year: 'numeric' };
-        //       const date = new Date(data.DailyForecasts[0].Date);
-        //       const formattedDate = date.toLocaleDateString('en-US', dateOptions);
-  
-        //       day1.textContent = formattedDate + " high of " + data.DailyForecasts[0].Temperature.Maximum.Value;
-  
-        //     const dateOptions1 = { month: '2-digit', day: '2-digit', year: 'numeric' };
-        //     const date1 = new Date(data.DailyForecasts[1].Date);
-        //     const formattedDate1 = date1.toLocaleDateString('en-US', dateOptions1);  
-        //       day2.textContent = formattedDate1 + " high of " + data.DailyForecasts[1].Temperature.Maximum.Value;
-              
-        //     const dateOptions2 = { month: '2-digit', day: '2-digit', year: 'numeric' };
-        //     const date2 = new Date(data.DailyForecasts[2].Date);
-        //     const formattedDate2 = date.toLocaleDateString('en-US', dateOptions2);  
-        //       day3.textContent = formattedDate2 + " high of " + data.DailyForecasts[2].Temperature.Maximum.Value;
-  
-        //     const dateOptions3 = { month: '2-digit', day: '2-digit', year: 'numeric' };
-        //     const date3 = new Date(data.DailyForecasts[3].Date);
-        //     const formattedDate3 = date3.toLocaleDateString('en-US', dateOptions3);
-        //       day4.textContent = formattedDate3 + " high of " + data.DailyForecasts[3].Temperature.Maximum.Value;
-              
-        //     const dateOptions4 = { month: '2-digit', day: '2-digit', year: 'numeric' };
-        //     const date4 = new Date(data.DailyForecasts[4].Date);
-        //     const formattedDate4 = date4.toLocaleDateString('en-US', dateOptions4);    
-        //       day5.textContent = formattedDate4 + " high of " + data.DailyForecasts[4].Temperature.Maximum.Value;       
-            
-        //   })
-        //   .catch(function(error){
-           
-        //   })
-        // }})     
+          
      
          
      
