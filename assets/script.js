@@ -18,24 +18,10 @@ var RSList = document.getElementById('RS-list');
 // var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q="+ city +"%20" + state;
 
 var recentSearches = []
-// this worked to change first button to recent search
-recent1.textContent = recentSearches[0]
-recent2.textContent = recentSearches[1]
-recent3.textContent = recentSearches[2]
 
 
-function renderRecentSeraches() {
-    // RSList.innerHTML = "";
 
-    for (var i = 0; i< recentSearches.length; i++)
-        var RS = recentSearches[i]
-
-    var li = document.createElement("li");
-    li.textContent = RS
-
-    
-    RSList.textContent = (li);
-    console.log(recentSearches);
+function renderRecentSeraches() {    
     recent1.textContent = recentSearches[0]
     recent2.textContent = recentSearches[1]
     recent3.textContent = recentSearches[2]
@@ -47,7 +33,7 @@ function init() {
   
     // If todos were retrieved from localStorage, update the todos array to it
     if (storedSearches !== null) {
-      todos = storedSearches;
+      recentSearches = storedSearches;
     }
   
     // This is a helper function that will render todos to the DOM
