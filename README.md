@@ -27,6 +27,7 @@ I wanted to create an app where I could easily search the 5 day forecast in citi
 
 
 ## Usage
+![screenshot of app](https://github.com/astrunk87/weatherApp/assets/134554632/f664b77d-58b2-48cb-8d99-c92b216d2995)
 
 Provide instructions and examples for use. Include screenshots as needed.
 
