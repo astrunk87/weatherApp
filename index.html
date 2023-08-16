@@ -30,10 +30,14 @@
             <h2 id="h2" placeholder="state"></h2>
         </div>    
     </div>
+    <br>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <button type="button" class="btn btn-primary btn-lg" id="searchButton">search</button>
+    </div>
     <br>    
     <div class="d-grid gap-2 col-6 mx-auto">
-        <button type="button" class="btn btn-primary btn-lg" id="searchButton">search</button>
-        <!-- <button id="search">test</button> -->
+        <button type="button" class="btn btn-primary btn-lg" id="newSearch">new search</button>
+        
     </div>
     <br>
     <div class="card-group">
@@ -44,6 +48,7 @@
             <p class="card-text" id="day1Maxtemp"><small class="text-body-secondary">max temp</small></p>
             <p class="card-text" id="day1Mintemp"><small class="text-body-secondary">min temp</small></p>
             <p class="card-text" id="day1Precip"><small class="text-body-secondary">precipitation</small></p>
+       
           </div>
         </div>
         <div class="card">
@@ -84,6 +89,10 @@
         </div>
     </div>
      <br>
+     <p class="text-center" id="day1"><small class="text-body-secondary">if precipitation is undefined there is no precipitation</small></p>
+    </div>
+    <br>
+    <h1 id="h1" class="text-center">recent searches</h1>
      
     <div class="d-grid gap-2 col-6 mx-auto">
         <button type="button" class="btn btn-primary btn-lg" id="recent1">recent search 1</button>
@@ -97,9 +106,12 @@
     <br>
     <div class="d-grid gap-2 col-6 mx-auto">
         <button type="button" class="btn btn-primary btn-lg" id="recent3">recent search 3</button>
-        <!-- <button id="search">test</button> -->
+        
     </div>
-    <!-- <span id="response-text">error?</span> -->
+   >
+      
+  </div>
+   
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>

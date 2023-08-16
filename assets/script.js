@@ -10,16 +10,10 @@ var stateButton = document.getElementById('stateButton');
 var city = localStorage.getItem('city');
 var state = localStorage.getItem('state');
 var RSList = document.getElementById('RS-list');
-
-
-// var APIKey = ("j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q");
-// var APIKey2 = "rWEeZY9SuFl7kzdnzhLLWSWn0yX3glbG"
-// var grabbed from full stack linked in assignment
-// var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q="+ city +"%20" + state;
+var clearButton = document.getElementById('clear');
+var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q="+ city +"%20" + state;
 
 var recentSearches = []
-
-
 
 function renderRecentSeraches() {    
     recent1.textContent = recentSearches[0]
@@ -28,15 +22,13 @@ function renderRecentSeraches() {
 }
 
 function init() {
-    // Get stored todos from localStorage
+    // pulled from a class instruction
     var storedSearches = JSON.parse(localStorage.getItem("recentSearches"));
   
-    // If todos were retrieved from localStorage, update the todos array to it
     if (storedSearches !== null) {
       recentSearches = storedSearches;
     }
-  
-    // This is a helper function that will render todos to the DOM
+    
     renderRecentSeraches();
   }
 
@@ -57,6 +49,12 @@ buttonEl.addEventListener('click', function(event) {
 
 init()
 
+function reload() {
+  location.reload();
+}
+
+ newSearch.addEventListener('click', reload);
+
 // base of this function is from class work 05-06 on form elements
 function handleCityButton(event) {
     event.preventDefault();  
@@ -76,11 +74,12 @@ function handleStateButton(event) {
     // print to the page
     h2EL.textContent = stateText;
     localStorage.setItem('state', h2EL.textContent);
+    
    
   }
 stateButton.addEventListener('click', handleStateButton);
 
-
+ 
 
 buttonEl.addEventListener('click', locationKey)      
 
@@ -91,19 +90,19 @@ function locationKey(){
       return response.json();
     })
     .then(function(data){
-        console.log('test');
-        // console.log(h1EL.textContent);
+           
         console.log(data);
         console.log(data[0].Key);
         var locationNum = (data[0].Key);
         
-        // if (locationTest == true){  
+        
           fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationNum}?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp`)      
           .then(function(response){
             return response.json();
           })
           .then(function(data){
             console.log(data);
+            
             // changes day 1 card
             let day1date = dayjs( data.DailyForecasts[0].Date);
             $('#day1date').text(day1date.format('MMM D, YYYY'));
@@ -111,7 +110,7 @@ function locationKey(){
             day1Maxtemp.textContent = "max temp of " +(data.DailyForecasts[0].Temperature.Maximum.Value)+ "°"
             day1Mintemp.textContent = "min temp of " +(data.DailyForecasts[0].Temperature.Minimum.Value) + "°"
             day1Precip.textContent = "type of precipitation: " + (data.DailyForecasts[0].Day.PrecipitationType)
-            // changes day2 card
+             // changes day2 card
             let day2date = dayjs( data.DailyForecasts[1].Date);
             $('#day2date').text(day2date.format('MMM D, YYYY'));
             day2Phrase.textContent = (data.DailyForecasts[1].Day.IconPhrase)
@@ -139,6 +138,9 @@ function locationKey(){
             day5Maxtemp.textContent = "max temp of " +(data.DailyForecasts[4].Temperature.Maximum.Value)+ "°"
             day5Mintemp.textContent = "min temp of " +(data.DailyForecasts[4].Temperature.Minimum.Value) + "°"
             day5Precip.textContent = "type of precipitation: " + (data.DailyForecasts[4].Day.PrecipitationType)
+
+            
+           
            
           
 
