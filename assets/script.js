@@ -50,6 +50,7 @@ buttonEl.addEventListener('click', function(event) {
 init()
 
 function reload() {
+  // this function was found on mozilla and helps reset the page
   location.reload();
 }
 
