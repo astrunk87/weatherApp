@@ -11,7 +11,7 @@ var city = localStorage.getItem('city');
 var state = localStorage.getItem('state');
 var RSList = document.getElementById('RS-list');
 var clearButton = document.getElementById('clear');
-var queryURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q="+ city +"%20" + state;
+var queryURL = "HTTPS://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q="+ city +"%20" + state;
 
 var recentSearches = []
 
@@ -97,7 +97,7 @@ function locationKey(){
         var locationNum = (data[0].Key);
         
         
-          fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationNum}?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp`)      
+          fetch(`HTTPS://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationNum}?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp`)      
           .then(function(response){
             return response.json();
           })
