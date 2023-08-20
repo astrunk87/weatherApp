@@ -11,7 +11,7 @@ var city = localStorage.getItem('city');
 var state = localStorage.getItem('state');
 var RSList = document.getElementById('RS-list');
 var clearButton = document.getElementById('clear');
-var queryURL = `HTTPS://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q=`+ city +"%20" + state;
+var queryURL = 'HTTPS://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q='+ city +"%20" + state;
 
 var recentSearches = []
 
