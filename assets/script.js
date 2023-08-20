@@ -11,10 +11,14 @@ var city = localStorage.getItem('city');
 var state = localStorage.getItem('state');
 var RSList = document.getElementById('RS-list');
 var clearButton = document.getElementById('clear');
-var queryURL = 'HTTPS://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q='+ city +"%20" + state;
-
+// var queryURL = 'HTTPS://dataservice.accuweather.com/locations/v1/cities/search?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp&q='+ city +"%20" + state;
+var countryCode = '840';
+var limit = '5';
+// open weather api key b046392f367662e66ecc3e239b36ad15
+var APIKey = 'b046392f367662e66ecc3e239b36ad15';
+// var queryURL = 'HTTPS://api.openweathermap.org/geo/1.0/direct?q=' + city + state + countryCode + '&appid=' + APIKey;
+var queryURL = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},{840}&appid=${APIKey}`
 var recentSearches = []
-
 function renderRecentSeraches() {    
     recent1.textContent = recentSearches[0]
     recent2.textContent = recentSearches[1]
