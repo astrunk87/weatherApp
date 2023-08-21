@@ -97,11 +97,17 @@ function locationKey(){
     .then(function(data){
            
         console.log(data);
-        console.log(data[0].Key);
-        var locationNum = (data[0].Key);
+        console.log(data[0].lon);
+        console.log(data[0].lat);
+        var lon = (data[0].lon);
+        var lat = (data[0].lat);
         
+        // THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed
         
-          fetch(`HTTPS://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationNum}?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp`)      
+          // fetch(`HTTPS://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationNum}?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp`)
+          // ^for acuweather api
+          fetch(`HTTPS://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`)
+            
           .then(function(response){
             return response.json();
           })
@@ -109,9 +115,10 @@ function locationKey(){
             console.log(data);
             
             // changes day 1 card
-            let day1date = dayjs( data.DailyForecasts[0].Date);
+            let day1date = dayjs(data.list[0].dt_txt);
+            console.log(data.list[0].dt_txt)
             $('#day1date').text(day1date.format('MMM D, YYYY'));
-            day1Phrase.textContent = (data.DailyForecasts[0].Day.IconPhrase)
+            day1Phrase.textContent = (data.list[0].weather[0].description)
             day1Maxtemp.textContent = "max temp of " +(data.DailyForecasts[0].Temperature.Maximum.Value)+ "°"
             day1Mintemp.textContent = "min temp of " +(data.DailyForecasts[0].Temperature.Minimum.Value) + "°"
             day1Precip.textContent = "type of precipitation: " + (data.DailyForecasts[0].Day.PrecipitationType)
