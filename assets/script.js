@@ -17,7 +17,7 @@ var limit = '5';
 // open weather api key b046392f367662e66ecc3e239b36ad15
 var APIKey = 'b046392f367662e66ecc3e239b36ad15';
 // var queryURL = 'HTTPS://api.openweathermap.org/geo/1.0/direct?q=' + city + state + countryCode + '&appid=' + APIKey;
-var queryURL = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},{840}&appid=${APIKey}`
+var queryURL = `HTTPS://api.openweathermap.org/geo/1.0/direct?q=${city},${state},{840}&appid=${APIKey}`
 var recentSearches = []
 function renderRecentSeraches() {    
     recent1.textContent = recentSearches[0]
@@ -86,10 +86,10 @@ stateButton.addEventListener('click', handleStateButton);
 
  
 
-buttonEl.addEventListener('click', locationKey)      
+buttonEl.addEventListener('click', getWeather)      
 
 // below grabbed from the first project "whose hotter", then edited for this project
-function locationKey(){
+function getWeather(){
     fetch(queryURL)
     .then(function(response){
       return response.json();
@@ -102,7 +102,7 @@ function locationKey(){
         var lon = (data[0].lon);
         var lat = (data[0].lat);
         
-        // THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed
+       
         
           // fetch(`HTTPS://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationNum}?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp`)
           // ^for acuweather api
