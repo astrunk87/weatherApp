@@ -106,7 +106,7 @@ function locationKey(){
         
           // fetch(`HTTPS://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationNum}?apikey=j3dU13wPqsC6XNhy4fabRe4Rta1qbIKp`)
           // ^for acuweather api
-          fetch(`HTTPS://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`)
+          fetch(`HTTPS://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`)
             
           .then(function(response){
             return response.json();
@@ -119,42 +119,42 @@ function locationKey(){
             console.log(data.list[0].dt_txt)
             $('#day1date').text(day1date.format('MMM D, YYYY'));
             day1Phrase.textContent = (data.list[0].weather[0].description)
-            day1Maxtemp.textContent = "max temp of " +(data.DailyForecasts[0].Temperature.Maximum.Value)+ "°"
-            day1Mintemp.textContent = "min temp of " +(data.DailyForecasts[0].Temperature.Minimum.Value) + "°"
-            day1Precip.textContent = "type of precipitation: " + (data.DailyForecasts[0].Day.PrecipitationType)
+            day1Maxtemp.textContent = "max temp of " +(data.list[0].main.temp_max)+ "°"
+            day1Mintemp.textContent = "min temp of " +(data.list[0].main.temp_min) + "°"
+            day1humidity.textContent = "humidity: " + (data.list[0].main.humidity)
              // changes day2 card
-            let day2date = dayjs( data.DailyForecasts[1].Date);
-            $('#day2date').text(day2date.format('MMM D, YYYY'));
-            day2Phrase.textContent = (data.DailyForecasts[1].Day.IconPhrase)
-            day2Maxtemp.textContent = "max temp of " +(data.DailyForecasts[1].Temperature.Maximum.Value)+ "°"
-            day2Mintemp.textContent = "min temp of " +(data.DailyForecasts[1].Temperature.Minimum.Value) + "°"
-            day2Precip.textContent = "type of precipitation: " + (data.DailyForecasts[1].Day.PrecipitationType)           
+             let day2date = dayjs(data.list[9].dt_txt);
+             console.log(data.list[9].dt_txt)
+             $('#day2date').text(day2date.format('MMM D, YYYY'));
+             day2Phrase.textContent = (data.list[9].weather[0].description)
+             day2Maxtemp.textContent = "max temp of " +(data.list[9].main.temp_max)+ "°"
+             day2Mintemp.textContent = "min temp of " +(data.list[9].main.temp_min) + "°"
+             day2humidity.textContent = "humidity: " + (data.list[9].main.humidity)          
             // changes day 3 card
-            let day3date = dayjs( data.DailyForecasts[2].Date);
+            let day3date = dayjs(data.list[17].dt_txt);
+            console.log(data.list[17].dt_txt)
             $('#day3date').text(day3date.format('MMM D, YYYY'));
-            day3Phrase.textContent = (data.DailyForecasts[2].Day.IconPhrase)
-            day3Maxtemp.textContent = "max temp of " +(data.DailyForecasts[2].Temperature.Maximum.Value)+ "°"
-            day3Mintemp.textContent = "min temp of " +(data.DailyForecasts[2].Temperature.Minimum.Value) + "°"
-            day3Precip.textContent = "type of precipitation: " + (data.DailyForecasts[2].Day.PrecipitationType)           
+            day3Phrase.textContent = (data.list[17].weather[0].description)
+            day3Maxtemp.textContent = "max temp of " +(data.list[17].main.temp_max)+ "°"
+            day3Mintemp.textContent = "min temp of " +(data.list[17].main.temp_min) + "°"
+            day3humidity.textContent = "humidity: " + (data.list[17].main.humidity)          
             // changes day 4 card
-            let day4date = dayjs( data.DailyForecasts[3].Date);
+            let day4date = dayjs(data.list[26].dt_txt);
+            console.log(data.list[26].dt_txt)
             $('#day4date').text(day4date.format('MMM D, YYYY'));
-            day4Phrase.textContent = (data.DailyForecasts[3].Day.IconPhrase)
-            day4Maxtemp.textContent = "max temp of " +(data.DailyForecasts[3].Temperature.Maximum.Value)+ "°"
-            day4Mintemp.textContent = "min temp of " +(data.DailyForecasts[3].Temperature.Minimum.Value) + "°"
-            day4Precip.textContent = "type of precipitation: " + (data.DailyForecasts[3].Day.PrecipitationType)           
+            day4Phrase.textContent = (data.list[26].weather[0].description)
+            day4Maxtemp.textContent = "max temp of " +(data.list[26].main.temp_max)+ "°"
+            day4Mintemp.textContent = "min temp of " +(data.list[26].main.temp_min) + "°"
+            day4humidity.textContent = "humidity: " + (data.list[26].main.humidity)          
             // changes day 5 card
-            let day5date = dayjs( data.DailyForecasts[4].Date);
+            let day5date = dayjs(data.list[35].dt_txt);
+            console.log(data.list[35].dt_txt)
             $('#day5date').text(day5date.format('MMM D, YYYY'));
-            day5Phrase.textContent = (data.DailyForecasts[4].Day.IconPhrase)
-            day5Maxtemp.textContent = "max temp of " +(data.DailyForecasts[4].Temperature.Maximum.Value)+ "°"
-            day5Mintemp.textContent = "min temp of " +(data.DailyForecasts[4].Temperature.Minimum.Value) + "°"
-            day5Precip.textContent = "type of precipitation: " + (data.DailyForecasts[4].Day.PrecipitationType)
-
-            
-           
-           
-          
+            day5Phrase.textContent = (data.list[35].weather[0].description)
+            day5Maxtemp.textContent = "max temp of " +(data.list[35].main.temp_max)+ "°"
+            day5Mintemp.textContent = "min temp of " +(data.list[35].main.temp_min) + "°"
+            day5humidity.textContent = "humidity: " + (data.list[35].main.humidity)
+         
 
         });
         
